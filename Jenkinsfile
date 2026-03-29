@@ -6,7 +6,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    docker.build("myapp")
+                    sh 'docker build -t myapp .'
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    docker.run("myapp")
+                    sh 'docker run -d -p 5000:5000 myapp'
                 }
             }
         }
